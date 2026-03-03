@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>抓球記分卡</title>
+    <title>Golf 成績卡</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <style>
-        /* 強制外衣鎖定在可視視窗內，不允許滾動 */
         html, body {
-            margin: 0; padding: 0; width: 100%; 
-            height: 100vh; height: 100dvh; /* 支援最新的動態視窗高度 */
-            overflow: hidden; background-color: #000;
+            margin: 0; 
+            padding: 0;
+            background-color: #121212; /* 讓動態島兩側的背景色跟導覽列一致 */
+            overflow: hidden;
+            width: 100%; 
+            height: 100vh; 
+            height: 100dvh; 
         }
+        
+        .iframe-container {
+            /* ⛳️ 核心解法：利用 iOS 專屬變數，把 iframe 避開頂部動態島與底部橫條 */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
         iframe {
-            width: 100%; height: 100%; border: none; display: block;
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+            display: block;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbyIyrIpEfWgVNwyXzp9NhN8nokkF_nb-jvhw9SvXI3EjGV11amnZkCadGEL_zOt3Vno/exec"></iframe>
+    <div class="iframe-container">
+        <iframe src="https://script.google.com/macros/s/AKfycbyIyrIpEfWgVNwyXzp9NhN8nokkF_nb-jvhw9SvXI3EjGV11amnZkCadGEL_zOt3Vno/exec"></iframe>
+    </div>
 </body>
 </html>
